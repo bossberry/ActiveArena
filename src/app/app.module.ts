@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule // Make sure routing is included here
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   bootstrap: [AppComponent] // Your root component
 })
