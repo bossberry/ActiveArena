@@ -1,0 +1,59 @@
+// src/theme.scss
+
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define a custom color for the accent palette
+$custom-yellow: (
+  50: #fff8e1,
+  100: #ffecb3,
+  200: #ffe082,
+  300: #ffd54f,
+  400: #ffca28,
+  500: #FFCC1D, // Custom yellow color
+  600: #ffb300,
+  700: #ffa000,
+  800: #ff8f00,
+  900: #ff6f00,
+  A100: #ffe57f,
+  A200: #ffd740,
+  A400: #ffc400,
+  A700: #ffab00,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: rgba(0, 0, 0, 0.87),
+    500: rgba(0, 0, 0, 0.87),
+    600: rgba(0, 0, 0, 0.87),
+    700: rgba(0, 0, 0, 0.87),
+    800: rgba(0, 0, 0, 0.87),
+    900: rgba(0, 0, 0, 0.87),
+    A100: rgba(0, 0, 0, 0.87),
+    A200: rgba(0, 0, 0, 0.87),
+    A400: rgba(0, 0, 0, 0.87),
+    A700: rgba(0, 0, 0, 0.87),
+  )
+);
+
+// Define the palettes for your theme
+$active-arena-primary: mat.define-palette(mat.$indigo-palette);
+$active-arena-accent: mat.define-palette($custom-yellow, A200, A100, A400); // Custom yellow accent palette
+$active-arena-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object
+$active-arena-theme: mat.define-light-theme((
+  color: (
+    primary: $active-arena-primary,
+    accent: $active-arena-accent,
+    warn: $active-arena-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app
+@include mat.all-component-themes($active-arena-theme);

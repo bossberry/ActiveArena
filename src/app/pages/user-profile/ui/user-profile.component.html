@@ -1,0 +1,59 @@
+<!-- <div class="user-profile">
+  <div class="profile-header">
+    <img [src]="currentUser.photoURL || 'assets/images/default-avatar.webp'" alt="Profile Picture" class="profile-image">
+    <h1>{{ currentUser.displayName }}</h1>
+  </div>
+
+  <div class="profile-details">
+    <p><strong>Email:</strong> {{ currentUser.email }}</p>
+    <p><strong>Member since:</strong> {{ currentUser.createdAt | date:'mediumDate' }}</p>
+    <p><strong>Last login:</strong> {{ currentUser.lastLoginAt | date:'medium' }}</p>
+    <p><strong>Email Verified:</strong> {{ currentUser.emailVerified ? 'Yes' : 'No' }}</p>
+  </div>
+
+  <div class="gym-details">
+    <h2>Your Gym Information</h2>
+    <p><strong>Current Plan:</strong> {{ currentUser.planName }}</p>
+    <p><strong>Next Billing Date:</strong> {{ currentUser.nextBillingDate | date:'mediumDate' }}</p>
+    <p><strong>Sessions Left:</strong> {{ currentUser.sessionsLeft }}</p>
+  </div>
+
+  <button (click)="logout()">Logout</button>
+</div> -->
+<button (click)="logout()">Logout</button>
+
+<mat-toolbar color="primary">
+  <span>User Profile</span>
+</mat-toolbar>
+
+<div class="profile-container">
+  <mat-card>
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+      <mat-form-field appearance="fill">
+        <mat-label>Display Name</mat-label>
+        <input matInput formControlName="displayName" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Height(CM)</mat-label>
+        <input matInput formControlName="height" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="formfield-dateOfBirth">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Mobile No.</mat-label>
+        <input matInput formControlName="mobileNo" >
+      </mat-form-field>
+
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Save Profile</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

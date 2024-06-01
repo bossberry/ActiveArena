@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<div [class.main-content]="!isLoginPage">
+    <router-outlet></router-outlet>
+</div>
+<app-menu-bar *ngIf="isLoggedIn$ | async"></app-menu-bar>
